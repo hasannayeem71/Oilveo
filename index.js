@@ -63,9 +63,9 @@ async function run() {
       res.json(result);
     });
     //get user order by email id
-    app.post("/orders/find", async (req, res) => {
+    app.get("/orders/find", async (req, res) => {
       const userEmail = req.query.email;
-      const query = { email: { $in: [userEmail] } };
+      const query = { email: userEmail }; //{ $in: [userEmail] }
       const result = await OrdersCollections.find(query).toArray();
       res.send(result);
     });
